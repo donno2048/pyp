@@ -13,7 +13,7 @@ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRU
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 OF THE POSSIBILITY OF SUCH DAMAGE.
 """
-import optparse,sys,os,time,json,glob,tempfile,datetime,getpass,re
+import optparse,sys,os,json,glob,tempfile,datetime,getpass,re
 try:from PypCustom import PypCustom
 except ImportError:
 	class PypCustom:0
@@ -313,7 +313,7 @@ class Pyp:
 		except:out=[iterables]
 		return out
 	def power_pipe_eval(self,cmd,inputs,second_stream_input,file_input,power_pipe_type):
-		variables={};self.history={};padded_output=[];variables['str']=PypStr;variables['n']=self.kept_n;variables['on']=self.n;inputs=self.flatten_list(inputs);inputs=[x for x in inputs if self.unlist_p(x)is not False];variables['pp']=PowerPipeList(inputs);variables['spp']=PowerPipeList(second_stream_input);variables['fpp']=PowerPipeList(file_input)
+		variables={};self.history={};variables['str']=PypStr;variables['n']=self.kept_n;variables['on']=self.n;inputs=self.flatten_list(inputs);inputs=[x for x in inputs if self.unlist_p(x)is not False];variables['pp']=PowerPipeList(inputs);variables['spp']=PowerPipeList(second_stream_input);variables['fpp']=PowerPipeList(file_input)
 		try:output=eval(cmd,variables)
 		except KeyboardInterrupt:print(Colors.RED+'killed by user'+Colors.OFF);sys.exit()
 		except Exception as err:print(Colors.RED+'error: '+str(err)+Colors.OFF,Colors.RED+cmd+Colors.OFF);sys.exit()
