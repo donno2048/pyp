@@ -38,7 +38,7 @@ class PowerPipeList(list,PowerPipeListCustom):
 		except AttributeError:pass
 		self.pyp=Pyp()
 	def divide(self,n_split):
-		sub_out=[];out=[];n=0;pyp=Pyp();inputs=self.pyp.flatten_list(self)
+		sub_out=[];out=[];n=0;inputs=self.pyp.flatten_list(self)
 		while inputs:
 			input=inputs.pop(0);n=n+1;sub_out.append(input)
 			if not n%n_split or not inputs:out.append([sub_out]);sub_out=[]
